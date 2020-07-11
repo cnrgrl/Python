@@ -5,62 +5,88 @@
 account1={
     "accountno":"1122334455",
     "name":"customer1",    
-    "balance":"2500",
-    "additional_account":"2000",
-    "additional_account_limit":"2000",
-    "date":"20.06.2020",
-}
-print("BANKAMIZA HOŞ GELDİNİZ..")
-print("Lütfen yapmak istediğiniz işlemi seçiniz\n"+
-        "1.Bakiye görüntüle\n"+
-        "2.Para çek\n"+
-        "3.Para yatır\n"+
-        "4.Çıkış için q basınız\n")
+    "bakiye":"2500",
+    "ekbakiye":"2000",
+    "limit":"2000"
+    }
+print("\n                BANKAMIZA HOŞ GELDİNİZ                \n")
+
 
 
 
 while True:
+    print("********************* İŞLEMLER **************************")
+    print("Lütfen yapmak istediğiniz işlemi seçiniz\n"+
+        "\n1.Bakiye görüntüle\n"+
+        "2.Para çek\n"+
+        "3.Para yatır\n"+
+        "4.Çıkış için q basınız\n")
+    print("*********************************************************\n")
     islem = input("seçim: ")
+    bakiye=int(account1['bakiye'])
+    ekbakiye=int(account1['ekbakiye'])
+    limit=int(account1['limit'])
 
     if str(islem) =="q":
         print("Çıkış yapılıyor.. İyi günler diliyoruz..")
         break
     
     elif str(islem)=="1":
-        print(f"Hesabınızda {account1['balance']} bulunuyor..")
+        print(f"\n########## Hesabınızda {bakiye} bulunuyor.. ############\n ")
 
     elif str(islem)=="2":
         cekilen=input("Çekmek istediğiniz miktar: ")
-        if int(cekilen)<int(account1["balance"]):
-            account1["balance"]=int(account1["balance"])-int(cekilen)
-            print(f"Hesabınızda kalan miktar: {account1['balance']}")
+        if int(cekilen)<=int(bakiye):
+            bakiye=bakiye-int(cekilen)
+            account1['bakiye']=str(bakiye)
+            print(f"Hesabınızda kalan miktar: {bakiye}")
         else:
             print("Hesabınızda yeterli miktar bulunmuyor...")
-            if (int(account1["balance"])+int(account1["additional_account"])>int(cekilen)):
-                addaccountkarar=input("Ek hesabınızdan kullanmak istermisiniz? e/h: ")
-                if addaccountkarar.lower()=="e":
-                    int(account1["additional_account"])-(int(cekilen) - int(account1["balance"]))
-                    print(f"Ek hesabınızda kalan miktar: {account1['additional_account']}")
-                else:
-                    print("Lütfen miktarı değiştiriniz..")
-
-            else:
-                print("Lütfen miktarı değiştiriniz..")
+            if (bakiye+ekbakiye)>int(cekilen):
+                while True:
+                    ekbakiyetalep=input("Ek hesabınızdan kullanmak istermisiniz? e/h: ")
+                    if ekbakiyetalep.lower()=="h":
+                        break
+                    elif ekbakiyetalep.lower()=="e":
+                        ekbakiye=ekbakiye-(int(cekilen) - bakiye)
+                        account1['ekbakiye']=str(ekbakiye)
+                        account1['bakiye']="0"
+                        print("\nİşlem gerçekleştirildi.. İşlem sonrası")
+                        print("Bakiyenizde kalan miktar: 0")
+                        print(f"Ek hesabınızda kalan miktar: {ekbakiye}\n")
+                        
+                        break
+                    else:
+                        print("Yanlış seçim..\n")
+ 
+  
     elif str(islem)=="3":
+        # print(ekbakiye)
+        # print(bakiye)
         yatan=input("Yatırmak istediğiniz miktar: ")
-        borc=int(account1["additional_account_limit"])-int(account1["additional_account"])
-        if borc==0:
-            balance=int(account1["balance"])+int(yatan)
-            print(f"Hesabınızda ki miktar: {balance}")
+        borc=limit-ekbakiye
+        if int(yatan)>borc:
+            yatandankalan=int(yatan)-borc
+            ekbakiye=limit
+            bakiye=bakiye+yatandankalan
+            account1['bakiye']=str(bakiye)
+            account1['ekbakiye']=str(ekbakiye)
+            print(f"Bakiyeni: {bakiye}")
+            print(f"Ek bakiyeniz: {ekbakiye}")
+        elif int(yatan)<borc:
+            ekbakiye=ekbakiye+int(yatan)
+            account1['ekbakiye']=str(ekbakiye)
+            account1['bakiye']="0"
+            print(f"Bakiyeni: {bakiye}")
+            print(f"Ek bakiyeniz: {ekbakiye}")
         else:
-            if yatan>borc:
-                balance=int(account1["balance"])+(yatan-borc)
-                account1["additional_account"]=account1["additional_account_limit"]
-                print(f"Hesabınızda ki miktar: {balance}")
-            else:
-                account1["additional_account"]=int(account1["additional_account"])+(borc-yatan)
-
+            bakiye=bakiye+int(yatan)
+            account1['ekbakiye']=account1['limit']
+            account1['bakiye']=str(bakiye)
+            print(f"Bakiyeni: {bakiye}")
+            print(f"Ek bakiyeniz: {ekbakiye}")
     else:
-        print("Yanlış seçim. Lütfen geçerli bir işlem numarası giriniz..")
-        
-    
+        print("Yanlış seçim.. Lütfen listeden seçim yapınız..\n")
+
+       
+  
