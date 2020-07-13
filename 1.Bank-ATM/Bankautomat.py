@@ -9,6 +9,13 @@ account1={
     "ekbakiye":"2000",
     "limit":"2000"
     }
+islemler= "Lütfen yapmak istediğiniz işlemi seçiniz\n\
+        1.Bakiye görüntüle\n\
+        2.Para çek\n\
+        3.Para yatır\n\
+        4.Çıkış için q basınız"
+
+
 print("\n                BANKAMIZA HOŞ GELDİNİZ                \n")
 
 
@@ -16,12 +23,9 @@ print("\n                BANKAMIZA HOŞ GELDİNİZ                \n")
 
 while True:
     print("********************* İŞLEMLER **************************")
-    print("Lütfen yapmak istediğiniz işlemi seçiniz\n"+
-        "\n1.Bakiye görüntüle\n"+
-        "2.Para çek\n"+
-        "3.Para yatır\n"+
-        "4.Çıkış için q basınız\n")
+    print(islemler)
     print("*********************************************************\n")
+    
     islem = input("seçim: ")
     bakiye=int(account1['bakiye'])
     ekbakiye=int(account1['ekbakiye'])
