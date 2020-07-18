@@ -14,6 +14,8 @@ Each choice wins against two other choices, loses against two other choices and 
 The Wikipedia entry for RPSLS gives the complete description of the details of 
 the game.
 """
+# https://py3.codeskulptor.org/#user305_GFKbdh0AKnW6H6t.py
+
 import random
 
 werts=["rock","spock","paper","lizard","scissors"]
