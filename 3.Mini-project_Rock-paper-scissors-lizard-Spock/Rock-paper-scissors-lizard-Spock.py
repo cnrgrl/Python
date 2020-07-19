@@ -60,7 +60,8 @@ print('q - Exit')
 
 def rpsls():
     score_player = 0
-    score_computer = 0   
+    score_computer = 0
+    tie=0   
     counter = 1 
 
     while counter <= int(number_of_challenge):
@@ -83,6 +84,7 @@ def rpsls():
             
             if winn == '0':
                 print ("{} and computer tie!".format(player_name))
+                tie=tie+1
             
             elif winn == 'Player':
                 print ("{} wins!".format(player_name))
@@ -109,6 +111,8 @@ def rpsls():
     
     print("   * {} times {} win.".format(score_player,player_name))
     print("   * {} times Computer win.".format(score_computer))
+    if (tie > 0):
+        print("   * {} times Computer and {} tie".format(tie, player_name))
 
 rpsls()
 
