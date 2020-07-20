@@ -1,3 +1,4 @@
+# Ismail Baser
 """
 Rock-paper-scissors-lizard-Spock 
 Rock-paper-scissors is a hand game that is played by two people. 
@@ -87,11 +88,11 @@ def rpsls():
                 tie=tie+1
             
             elif winn == 'Player':
-                print ("{} wins!".format(player_name))
+                print ("{} gewonnen!".format(player_name))
                 score_player = score_player + 1
             
             elif winn == 'computer':
-                print ("Computer wins!")
+                print ("Computer gewonnen!")
                 score_computer = score_computer + 1
 
             counter += 1
@@ -109,8 +110,8 @@ def rpsls():
     else:
         print("\n!! Computer and {} tie !!".format(player_name))    
     
-    print("   * {} times {} win.".format(score_player,player_name))
-    print("   * {} times Computer win.".format(score_computer))
+    print("   * {} times {} gewonnen.".format(score_player,player_name))
+    print("   * {} times Computer gewonnen.".format(score_computer))
     if (tie > 0):
         print("   * {} times Computer and {} tie".format(tie, player_name))
 
