@@ -15,7 +15,7 @@ Each choice wins against two other choices, loses against two other choices and 
 The Wikipedia entry for RPSLS gives the complete description of the details of 
 the game.
 """
-# https://py3.codeskulptor.org/#user305_GFKbdh0AKnW6H6t.py
+# https://py3.codeskulptor.org/#user305_USZDj7ggom5hYnA.py
 
 import random
 
@@ -68,10 +68,10 @@ def rpsls():
     while counter <= int(number_of_challenge):
         
         if counter == int(number_of_challenge):
-            player_choice = input("\nLast Choise: ")
+            player_choice = input("\nLast Choise [0-4] - 'q' for Exit: ")
         
         else:
-            player_choice = input("\n{}. Choise: ".format(counter))
+            player_choice = input("\n{}. Choise [0-4] - 'q' for Exit: ".format(counter))
         
         if(player_choice == 'q'):
             print('Bye! Left the game')
