@@ -1,3 +1,4 @@
+# Ismail Baser
 """
 Rock-paper-scissors-lizard-Spock 
 Rock-paper-scissors is a hand game that is played by two people. 
@@ -14,7 +15,7 @@ Each choice wins against two other choices, loses against two other choices and 
 The Wikipedia entry for RPSLS gives the complete description of the details of 
 the game.
 """
-# https://py3.codeskulptor.org/#user305_GFKbdh0AKnW6H6t.py
+# https://py3.codeskulptor.org/#user305_USZDj7ggom5hYnA.py
 
 import random
 
@@ -67,10 +68,10 @@ def rpsls():
     while counter <= int(number_of_challenge):
         
         if counter == int(number_of_challenge):
-            player_choice = input("\nLast Choise: ")
+            player_choice = input("\nLast Choise [0-4] - 'q' for Exit: ")
         
         else:
-            player_choice = input("\n{}. Choise: ".format(counter))
+            player_choice = input("\n{}. Choise [0-4] - 'q' for Exit: ".format(counter))
         
         if(player_choice == 'q'):
             print('Bye! Left the game')
@@ -87,11 +88,11 @@ def rpsls():
                 tie=tie+1
             
             elif winn == 'Player':
-                print ("{} wins!".format(player_name))
+                print ("{} gewonnen!".format(player_name))
                 score_player = score_player + 1
             
             elif winn == 'computer':
-                print ("Computer wins!")
+                print ("Computer gewonnen!")
                 score_computer = score_computer + 1
 
             counter += 1
@@ -109,8 +110,8 @@ def rpsls():
     else:
         print("\n!! Computer and {} tie !!".format(player_name))    
     
-    print("   * {} times {} win.".format(score_player,player_name))
-    print("   * {} times Computer win.".format(score_computer))
+    print("   * {} times {} gewonnen.".format(score_player,player_name))
+    print("   * {} times Computer gewonnen.".format(score_computer))
     if (tie > 0):
         print("   * {} times Computer and {} tie".format(tie, player_name))
 
