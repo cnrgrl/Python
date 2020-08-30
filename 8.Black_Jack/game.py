@@ -29,14 +29,14 @@ class Game(Players, DeckOfCards):
             return
         elif self._current_players[0].bust > 0:
             for player in self._current_players[1:]:
-                if player.bust == 0:
+                if player.bust == 0 and player.black_jack == 0:
                     player.score = 1
                     
         elif self._current_players[0].bust == 0:
             for player in self._current_players[1:]:
-                if self._current_players[0].hand_value > player.hand_value:
+                if player.black_jack == 0 and self._current_players[0].hand_value > player.hand_value:
                     self._current_players[0].score = 1
-                elif self._current_players[0].hand_value < player.hand_value and player.bust == 0:
+                elif player.black_jack == 0 and self._current_players[0].hand_value < player.hand_value and player.bust == 0:
                     player.score = 1
 
     def acecontrol(self):
@@ -48,8 +48,8 @@ class Game(Players, DeckOfCards):
         if kurpiyes_card2 == 1:
             for player in self._current_players:
                 print(f"{player.name} = {player.hand_cards} => {player.hand_value}", 
-                "=> BUST" if player.bust == 1 else '',
-                f" /  Score => {player.score}",
+                "=> BUST " if player.bust == 1 else '',
+                "!!! Win !!!" if player.score > 0 else '!!! Lose !!!',
                 " => !!! Black Jack !!!" if player.black_jack == 1 else '')
                                 
         elif kurpiyes_card2  == 0:
