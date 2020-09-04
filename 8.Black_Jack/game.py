@@ -27,17 +27,20 @@ class Game(Players, DeckOfCards):
     def scoreValues(self): 
         if self._current_players[0].black_jack == 1:            
             return
-        elif self._current_players[0].bust > 0:
+        elif self._current_players[0].bust > 0: # Kurpiye = BUST
             for player in self._current_players[1:]:
-                if player.bust == 0 and player.black_jack == 0:
+                if player.bust == 0 and player.black_jack == 0: #Player nicht Bust und nicht BlackJack
                     player.score = 1
                     
-        elif self._current_players[0].bust == 0:
+        elif self._current_players[0].bust == 0: # Kurpiye nicht BUST - valuHands zwieschen 17-21
             for player in self._current_players[1:]:
                 if player.black_jack == 0 and self._current_players[0].hand_value > player.hand_value:
                     self._current_players[0].score = 1
                 elif player.black_jack == 0 and self._current_players[0].hand_value < player.hand_value and player.bust == 0:
                     player.score = 1
+                elif player.black_jack == 0 and self._current_players[0].hand_value == player.hand_value and player.bust == 0:
+                    player.score = 0
+                    self._current_players[0].score=0
 
     def acecontrol(self):
         pass
